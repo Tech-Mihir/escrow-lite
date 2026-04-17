@@ -1,0 +1,24 @@
+# Dependencies
+frontend/node_modules/
+
+# Next.js build output
+frontend/.next/
+frontend/out/
+
+# Environment variables — NEVER commit these
+frontend/.env.local
+frontend/.env*.local
+
+# Rust build artifacts
+contracts/target/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Stellar CLI keys (sensitive)
+~/.config/stellar/

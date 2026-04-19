@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  webpack: (config, { isServer }) => {
+  webpack: (config) => {
     config.resolve.fallback = {
       ...config.resolve.fallback,
       fs: false,
@@ -11,15 +11,22 @@ const nextConfig: NextConfig = {
       stream: false,
       path: false,
       os: false,
+      "sodium-native": false,
+      "require-addon": false,
     };
 
-    if (!isServer) {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        "sodium-native": false,
-        "require-addon": false,
-      };
-    }
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "sodium-native": false,
+      "require-addon": false,
+    };
+
+    // Suppress critical dependency warnings from stellar-sdk
+    config.ignoreWarnings = [
+      { module: /node_modules\/require-addon/ },
+      { module: /node_modules\/sodium-native/ },
+      /Critical dependency/,
+    ];
 
     return config;
   },

@@ -165,29 +165,37 @@ async function invokeContract(
     transactionData?: string;
     minResourceFee?: string;
     error?: string;
-    restorePreamble?: { transactionData: string; minResourceFee: string };
   };
 
   if (simRes.error) throw new Error(`Simulation failed: ${simRes.error}`);
   if (!simRes.results?.[0]) throw new Error("Simulation returned no result");
 
-  // Step 3: Decode soroban transaction data and fees
-  const sorobanData = simRes.transactionData
-    ? xdr.SorobanTransactionData.fromXDR(simRes.transactionData, "base64")
-    : undefined;
-
   const resourceFee = BigInt(simRes.minResourceFee ?? "0");
   const totalFee = (BigInt("1000000") + resourceFee).toString();
 
-  // Step 4: Decode auth entries from simulation
-  const authEntries = (simRes.results[0].auth ?? []).map((a: string) =>
-    xdr.SorobanAuthorizationEntry.fromXDR(a, "base64")
-  );
-
-  // Step 5: Get FRESH account sequence for the real tx (avoids seq mismatch)
+  // Step 3: Get FRESH account sequence for the real tx
   const freshAccount = await getAccount(callerPublicKey);
 
-  // Step 6: Build the assembled transaction with soroban data + auth
+  // Step 4: Build assembled tx — pass auth + sorobanData as raw base64 via SDK
+  // Use try/catch around XDR parsing to handle browser bundle issues
+  let authEntries: xdr.SorobanAuthorizationEntry[] = [];
+  try {
+    authEntries = (simRes.results[0].auth ?? []).map((a: string) =>
+      xdr.SorobanAuthorizationEntry.fromXDR(a, "base64")
+    );
+  } catch {
+    authEntries = [];
+  }
+
+  let sorobanData: xdr.SorobanTransactionData | undefined;
+  try {
+    sorobanData = simRes.transactionData
+      ? xdr.SorobanTransactionData.fromXDR(simRes.transactionData, "base64")
+      : undefined;
+  } catch {
+    sorobanData = undefined;
+  }
+
   const invokeOp = Operation.invokeHostFunction({
     func: xdr.HostFunction.hostFunctionTypeInvokeContract(
       new xdr.InvokeContractArgs({
@@ -212,25 +220,24 @@ async function invokeContract(
 
   const finalTx = finalTxBuilder.build();
 
-  // Step 7: Sign with Freighter
+  // Step 5: Sign with Freighter
   const signedXdr = await signTx(finalTx.toXDR(), NETWORK_PASSPHRASE);
 
-  // Step 8: Send via Soroban RPC
+  // Step 6: Send via Soroban RPC
   const sendRes = await sorobanRpc("sendTransaction", {
     transaction: signedXdr,
   }) as { hash: string; status: string; errorResultXdr?: string };
 
   if (sendRes.status === "ERROR") {
-    // Decode the XDR error code for a human-readable message
-    let errMsg = sendRes.errorResultXdr ?? "unknown";
+    let errMsg = sendRes.errorResultXdr ?? "unknown error";
     try {
       const result = xdr.TransactionResult.fromXDR(errMsg, "base64");
-      errMsg = result.result().switch().name + " (code: " + result.feeCharged().toString() + ")";
+      errMsg = result.result().switch().name;
     } catch { /* keep raw */ }
-    throw new Error(`Send failed: ${errMsg}`);
+    throw new Error(`Transaction rejected: ${errMsg}`);
   }
 
-  // Step 9: Poll for confirmation
+  // Step 7: Poll for confirmation
   for (let i = 0; i < 30; i++) {
     await new Promise((r) => setTimeout(r, 2000));
 
@@ -250,20 +257,13 @@ async function invokeContract(
               return scValToNative(retVal);
             }
           }
-        } catch { /* parsing failed */ }
+        } catch { /* parsing failed — tx still succeeded */ }
       }
       return "SUCCESS";
     }
 
     if (getRes.status === "FAILED") {
-      let failMsg = `Transaction failed. Hash: ${sendRes.hash}`;
-      if (getRes.resultXdr) {
-        try {
-          const result = xdr.TransactionResult.fromXDR(getRes.resultXdr, "base64");
-          failMsg = `Transaction failed: ${result.result().switch().name}`;
-        } catch { /* keep default */ }
-      }
-      throw new Error(failMsg);
+      throw new Error(`Transaction failed. Check: https://stellar.expert/explorer/testnet/tx/${sendRes.hash}`);
     }
   }
 

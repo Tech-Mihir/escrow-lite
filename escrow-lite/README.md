@@ -146,7 +146,7 @@ All transactions verifiable on [Stellar Expert Testnet Explorer](https://stellar
 
 ## User Feedback
 
-**Google Form:** https://forms.gle/your-form-link-here
+**Google Form:** https://docs.google.com/forms/d/e/1FAIpQLSf_fzKHtmkT2bchsLBZHi4GF8QWYxIheTzp5Gag--tA6DTHJg/viewform
 
 **Exported Responses:** [user_feedback.xlsx](./docs/user_feedback.xlsx)
 

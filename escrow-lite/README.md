@@ -6,8 +6,9 @@ A trustless escrow system built on Stellar Soroban smart contracts. Lock XLM, co
 
 ## Live Demo
 
-> Deploy to Vercel and add your link here:
-> **https://escrow-lite.vercel.app** ← replace with your Vercel URL
+**https://escrow-lite.vercel.app**
+
+> Preview URL: https://escrow-lite-nfquykjoa-shirolkarmihir-1389s-projects.vercel.app
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Tech-Mihir/escrow-lite)
 

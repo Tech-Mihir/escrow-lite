@@ -16,13 +16,7 @@ A trustless escrow system built on Stellar Soroban smart contracts. Lock XLM, co
 
 ## Demo Video
 
-> Record a short walkthrough (Loom or YouTube) showing:
-> 1. Connect wallet
-> 2. Create escrow
-> 3. Mark delivered
-> 4. Release payment
->
-> **Video Link:** https://your-demo-video-link-here
+**https://www.loom.com/share/31f688a45e544ec5afb4700f6bd9906d**
 
 ---
 

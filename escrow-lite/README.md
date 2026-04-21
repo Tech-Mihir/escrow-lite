@@ -130,17 +130,19 @@ The example file already has the deployed contract IDs — copy as-is.
 
 ---
 
-## Testnet Users (5+ Verified Wallets)
+## Testnet Users (5 Verified Wallets)
 
 All transactions verifiable on [Stellar Expert Testnet Explorer](https://stellar.expert/explorer/testnet).
 
-| # | Wallet Address | Explorer Link |
-|---|---------------|---------------|
-| 1 | `GARMGQ2JCHZ46B6ZSXPAMPXG2RNDD6XPOBF4NF2HFFKXWKI5XKA4L3WQ` | [View](https://stellar.expert/explorer/testnet/account/GARMGQ2JCHZ46B6ZSXPAMPXG2RNDD6XPOBF4NF2HFFKXWKI5XKA4L3WQ) |
-| 2 | `GDAC7JVMI3NDFBNOFWMI3GNCAYNV7UX4NF25NBACNO56T4US3IA5DFYH` | [View](https://stellar.expert/explorer/testnet/account/GDAC7JVMI3NDFBNOFWMI3GNCAYNV7UX4NF25NBACNO56T4US3IA5DFYH) |
-| 3 | Add wallet address | — |
-| 4 | Add wallet address | — |
-| 5 | Add wallet address | — |
+**Table 1: Onboarded Users**
+
+| # | User Name | User Email | User Wallet Address |
+|---|-----------|------------|---------------------|
+| 1 | User 1 | user1@example.com | `GARMGQ2JCHZ46B6ZSXPAMPXG2RNDD6XPOBF4NF2HFFKXWKI5XKA4L3WQ` |
+| 2 | User 2 | user2@example.com | `GDAC7JVMI3NDFBNOFWMI3GNCAYNV7UX4NF25NBACNO56T4US3IA5DFYH` |
+| 3 | User 3 | user3@example.com | Add wallet address |
+| 4 | User 4 | user4@example.com | Add wallet address |
+| 5 | User 5 | user5@example.com | Add wallet address |
 
 ---
 
@@ -151,6 +153,16 @@ All transactions verifiable on [Stellar Expert Testnet Explorer](https://stellar
 **Exported Responses:** [user_feedback.xlsx](./docs/user_feedback.xlsx)
 
 Full feedback summary: [docs/USER_FEEDBACK.md](./docs/USER_FEEDBACK.md)
+
+**Table 2: User Feedback Implementation**
+
+| # | User Name | User Email | User Wallet Address | Commit ID |
+|---|-----------|------------|---------------------|-----------|
+| 1 | User 1 | user1@example.com | `GARMGQ2JCHZ46B6ZSXPAMPXG2RNDD6XPOBF4NF2HFFKXWKI5XKA4L3WQ` | [4eb3320](https://github.com/Tech-Mihir/escrow-lite/commit/4eb3320) |
+| 2 | User 2 | user2@example.com | `GDAC7JVMI3NDFBNOFWMI3GNCAYNV7UX4NF25NBACNO56T4US3IA5DFYH` | [4eb3320](https://github.com/Tech-Mihir/escrow-lite/commit/4eb3320) |
+| 3 | User 3 | user3@example.com | Add wallet address | Add commit ID |
+| 4 | User 4 | user4@example.com | Add wallet address | Add commit ID |
+| 5 | User 5 | user5@example.com | Add wallet address | Add commit ID |
 
 ---
 

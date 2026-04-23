@@ -22,15 +22,13 @@ User onboarding and feedback was collected via Google Form:
 
 The following users tested the MVP on Stellar Testnet. All transactions are verifiable on Stellar Expert.
 
-| # | Name | Wallet Address | Escrow TX | Rating |
-|---|------|---------------|-----------|--------|
-| 1 | User 1 | `GARMGQ2JCHZ46B6ZSXPAMPXG2RNDD6XPOBF4NF2HFFKXWKI5XKA4L3WQ` | [View](https://stellar.expert/explorer/testnet/account/GARMGQ2JCHZ46B6ZSXPAMPXG2RNDD6XPOBF4NF2HFFKXWKI5XKA4L3WQ) | 4/5 |
-| 2 | User 2 | `GDAC7JVMI3NDFBNOFWMI3GNCAYNV7UX4NF25NBACNO56T4US3IA5DFYH` | [View](https://stellar.expert/explorer/testnet/account/GDAC7JVMI3NDFBNOFWMI3GNCAYNV7UX4NF25NBACNO56T4US3IA5DFYH) | 5/5 |
-| 3 | User 3 | Add wallet address here | — | — |
-| 4 | User 4 | Add wallet address here | — | — |
-| 5 | User 5 | Add wallet address here | — | — |
-
-> Add more users as they test the app. Wallet addresses are verifiable at https://stellar.expert/explorer/testnet
+| # | Name | Email | Wallet Address | Rating | Feedback |
+|---|------|-------|---------------|--------|----------|
+| 1 | Sneha Pradip Adhalrao | snehaadhalrao2006@gmail.com | `GCUFK3VVC4D7AQOWXZ6QN2TU6MMQ3DXY5FCEVEH352KKBMRND4OAE23B` | 5/5 | Site workflow is good, no lags or bugs |
+| 2 | Kartik Botre | kartikbotre2410@gmail.com | `GAW5QO2JPBTMQF2CWU3BBBI74ERAGLT3C5YVIKGNXPNVHYLFFDWTDSRN` | 5/5 | Wants dispute resolution feature |
+| 3 | Mihir Shirolkar | shirolkarmihir@gmail.com | `GARMGQ2JCHZ46B6ZSXPAMPXG2RNDD6XPOBE4NE2HEEKXWKH5XKA4L3WQ` | 5/5 | Wants dispute resolution feature |
+| 4 | Neel Pote | neelpote44@gmail.com | `GAZ27SJ7YFLUGO2O4JCTOWLNNXQZ5C7H5A7WFWEBALT6F6JELKJKNV44` | 4/5 | UI could be better, wants escrow cancellation |
+| 5 | Om Ozarkar | ozarkarom07@gmail.com | `GCW5A3XBNPB7YQT2OK6XS36D2BA25C5CQ5D7CMTTOUAPJXP3YDEZMB7Q` | 5/5 | Great product, wants dispute resolution |
 
 ---
 
@@ -41,18 +39,16 @@ The following users tested the MVP on Stellar Testnet. All transactions are veri
 - No sign-up required — just connect wallet
 - Instant testnet XLM funding via Friendbot button
 - Clear status badges (Funded / Delivered / Released)
+- No bugs or lags reported by 4 out of 5 users
 
 ### Issues reported
-- "localhost is not connected to Freighter" warning on first use
-- Needed to disconnect/reconnect when switching accounts
-- No confirmation email after escrow creation
+- UI could be improved (Neel Pote)
+- Freighter "localhost not connected" warning on first use
 
-### Feature requests
-- Dispute resolution / arbitration
-- Email/notification when escrow status changes
-- Escrow cancellation option
-- Deadline/expiry for escrows
-- Mobile wallet support
+### Feature requests (most popular)
+- Dispute resolution / arbitration — requested by 3 users
+- Escrow cancellation — requested by 1 user
+- Email notifications — requested by 1 user
 
 ---
 

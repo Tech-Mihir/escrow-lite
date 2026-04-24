@@ -156,13 +156,13 @@ Full feedback summary: [docs/USER_FEEDBACK.md](./docs/USER_FEEDBACK.md)
 
 **Table 2: User Feedback Implementation**
 
-| # | User Name | User Email | User Wallet Address | Rating | Commit ID |
-|---|-----------|------------|---------------------|--------|-----------|
-| 1 | Sneha Pradip Adhalrao | snehaadhalrao2006@gmail.com | `GCUFK3VVC4D7AQOWXZ6QN2TU6MMQ3DXY5FCEVEH352KKBMRND4OAE23B` | 5/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
-| 2 | Kartik Botre | kartikbotre2410@gmail.com | `GAW5QO2JPBTMQF2CWU3BBBI74ERAGLT3C5YVIKGNXPNVHYLFFDWTDSRN` | 5/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
-| 3 | Mihir Shirolkar | shirolkarmihir@gmail.com | `GARMGQ2JCHZ46B6ZSXPAMPXG2RNDD6XPOBE4NE2HEEKXWKH5XKA4L3WQ` | 5/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
-| 4 | Neel Pote | neelpote44@gmail.com | `GAZ27SJ7YFLUGO2O4JCTOWLNNXQZ5C7H5A7WFWEBALT6F6JELKJKNV44` | 4/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
-| 5 | Om Ozarkar | ozarkarom07@gmail.com | `GCW5A3XBNPB7YQT2OK6XS36D2BA25C5CQ5D7CMTTOUAPJXP3YDEZMB7Q` | 5/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
+| # | User Name | User Email | User Wallet Address | User Feedback | Commit ID |
+|---|-----------|------------|---------------------|---------------|-----------|
+| 1 | Sneha Pradip Adhalrao | snehaadhalrao2006@gmail.com | `GCUFK3VVC4D7AQOWXZ6QN2TU6MMQ3DXY5FCEVEH352KKBMRND4OAE23B` | Site workflow is good, no lags or bugs. Rating: 5/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
+| 2 | Kartik Botre | kartikbotre2410@gmail.com | `GAW5QO2JPBTMQF2CWU3BBBI74ERAGLT3C5YVIKGNXPNVHYLFFDWTDSRN` | Wants dispute resolution feature added. Rating: 5/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
+| 3 | Mihir Shirolkar | shirolkarmihir@gmail.com | `GARMGQ2JCHZ46B6ZSXPAMPXG2RNDD6XPOBE4NE2HEEKXWKH5XKA4L3WQ` | Wants dispute resolution feature added. Rating: 5/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
+| 4 | Neel Pote | neelpote44@gmail.com | `GAZ27SJ7YFLUGO2O4JCTOWLNNXQZ5C7H5A7WFWEBALT6F6JELKJKNV44` | UI could be better, wants escrow cancellation feature. Rating: 4/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
+| 5 | Om Ozarkar | ozarkarom07@gmail.com | `GCW5A3XBNPB7YQT2OK6XS36D2BA25C5CQ5D7CMTTOUAPJXP3YDEZMB7Q` | Great product, wants dispute resolution. Rating: 5/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
 
 ---
 

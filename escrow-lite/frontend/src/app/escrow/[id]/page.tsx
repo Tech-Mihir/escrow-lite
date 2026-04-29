@@ -15,6 +15,80 @@ import TxStatus from "@/components/TxStatus";
 
 type TxState = "idle" | "pending" | "success" | "error";
 
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  return (
+    <button
+      onClick={handleCopy}
+      title="Copy address"
+      className="text-gray-500 hover:text-gray-300 transition-colors text-xs ml-1"
+    >
+      {copied ? "✓" : "⧉"}
+    </button>
+  );
+}
+
+function EscrowStepper({ status }: { status: string }) {
+  const steps = [
+    { label: "Funded", desc: "Buyer locked XLM" },
+    { label: "Delivered", desc: "Seller confirmed delivery" },
+    { label: "Released", desc: "Payment sent to seller" },
+  ];
+  const currentIndex =
+    status === "Funded" ? 0 : status === "Delivered" ? 1 : 2;
+
+  return (
+    <div className="flex items-center justify-between mb-6">
+      {steps.map((step, i) => (
+        <div key={step.label} className="flex-1 flex flex-col items-center">
+          <div className="flex items-center w-full">
+            {i > 0 && (
+              <div
+                className={`flex-1 h-0.5 ${
+                  i <= currentIndex ? "bg-stellar-purple" : "bg-gray-700"
+                }`}
+              />
+            )}
+            <div
+              className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold border-2 ${
+                i < currentIndex
+                  ? "bg-stellar-purple border-stellar-purple text-white"
+                  : i === currentIndex
+                  ? "bg-stellar-purple border-stellar-purple text-white ring-2 ring-purple-400/30"
+                  : "bg-gray-800 border-gray-600 text-gray-500"
+              }`}
+            >
+              {i < currentIndex ? "✓" : i + 1}
+            </div>
+            {i < steps.length - 1 && (
+              <div
+                className={`flex-1 h-0.5 ${
+                  i < currentIndex ? "bg-stellar-purple" : "bg-gray-700"
+                }`}
+              />
+            )}
+          </div>
+          <p
+            className={`text-xs mt-1.5 font-medium ${
+              i === currentIndex ? "text-white" : "text-gray-500"
+            }`}
+          >
+            {step.label}
+          </p>
+          <p className="text-xs text-gray-600 text-center hidden sm:block">
+            {step.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function EscrowDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -126,6 +200,9 @@ export default function EscrowDetailPage() {
           <StatusBadge status={escrow.status} />
         </div>
 
+        {/* Progress stepper */}
+        <EscrowStepper status={escrow.status} />
+
         {/* Amount */}
         <div className="bg-gray-800 rounded-lg p-4 mb-6 text-center">
           <p className="text-gray-400 text-xs mb-1">Locked Amount</p>
@@ -139,12 +216,13 @@ export default function EscrowDetailPage() {
         <div className="space-y-3 mb-6">
           <div className="flex items-center justify-between">
             <span className="text-gray-400 text-sm">Buyer</span>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <span className="font-mono text-xs text-gray-300">
                 {shortAddr(escrow.buyer)}
               </span>
+              <CopyButton text={escrow.buyer} />
               {isBuyer && (
-                <span className="text-xs bg-blue-900 text-blue-300 px-2 py-0.5 rounded-full">
+                <span className="text-xs bg-blue-900 text-blue-300 px-2 py-0.5 rounded-full ml-1">
                   You
                 </span>
               )}
@@ -152,20 +230,28 @@ export default function EscrowDetailPage() {
           </div>
           <div className="flex items-center justify-between">
             <span className="text-gray-400 text-sm">Seller</span>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <span className="font-mono text-xs text-gray-300">
                 {shortAddr(escrow.seller)}
               </span>
+              <CopyButton text={escrow.seller} />
               {isSeller && (
-                <span className="text-xs bg-purple-900 text-purple-300 px-2 py-0.5 rounded-full">
+                <span className="text-xs bg-purple-900 text-purple-300 px-2 py-0.5 rounded-full ml-1">
                   You
                 </span>
               )}
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-gray-400 text-sm">Status</span>
-            <StatusBadge status={escrow.status} />
+            <span className="text-gray-400 text-sm">Explorer</span>
+            <a
+              href={`https://stellar.expert/explorer/testnet/contract/${escrow.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-stellar-purple hover:underline"
+            >
+              View on Stellar Expert ↗
+            </a>
           </div>
         </div>
 

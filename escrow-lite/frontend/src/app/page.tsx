@@ -6,10 +6,13 @@ import EscrowCard from "@/components/EscrowCard";
 import { getAllEscrows, type EscrowData } from "@/lib/stellar";
 import { useWallet } from "@/lib/WalletContext";
 
+type FilterTab = "all" | "mine" | "funded" | "delivered" | "released";
+
 export default function DashboardPage() {
-  const { connected, connect, connecting } = useWallet();
+  const { publicKey, connected, connect, connecting } = useWallet();
   const [escrows, setEscrows] = useState<EscrowData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<FilterTab>("all");
 
   useEffect(() => {
     setLoading(true);
@@ -18,6 +21,23 @@ export default function DashboardPage() {
       .catch(() => setEscrows([]))
       .finally(() => setLoading(false));
   }, []);
+
+  const filteredEscrows = escrows.filter((e) => {
+    if (activeTab === "mine")
+      return publicKey && (e.buyer === publicKey || e.seller === publicKey);
+    if (activeTab === "funded") return e.status === "Funded";
+    if (activeTab === "delivered") return e.status === "Delivered";
+    if (activeTab === "released") return e.status === "Released";
+    return true;
+  });
+
+  const tabs: { id: FilterTab; label: string }[] = [
+    { id: "all", label: "All" },
+    { id: "mine", label: "My Escrows" },
+    { id: "funded", label: "Funded" },
+    { id: "delivered", label: "Delivered" },
+    { id: "released", label: "Released" },
+  ];
 
   return (
     <div>
@@ -51,12 +71,12 @@ export default function DashboardPage() {
       )}
 
       {/* Actions bar */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold text-gray-200">
-          All Escrows{" "}
+          Escrows{" "}
           {!loading && (
             <span className="text-gray-500 font-normal text-sm">
-              ({escrows.length})
+              ({filteredEscrows.length})
             </span>
           )}
         </h2>
@@ -68,6 +88,23 @@ export default function DashboardPage() {
         </Link>
       </div>
 
+      {/* Filter tabs */}
+      <div className="flex gap-2 mb-6 flex-wrap">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`text-xs px-3 py-1.5 rounded-full font-medium transition-colors ${
+              activeTab === tab.id
+                ? "bg-stellar-purple text-white"
+                : "bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
       {/* Loading */}
       {loading && (
         <div className="text-center py-16 text-gray-500">
@@ -76,11 +113,17 @@ export default function DashboardPage() {
       )}
 
       {/* Empty state */}
-      {!loading && escrows.length === 0 && (
+      {!loading && filteredEscrows.length === 0 && (
         <div className="text-center py-16">
-          <p className="text-gray-500 text-lg mb-2">No escrows yet.</p>
+          <p className="text-gray-500 text-lg mb-2">
+            {activeTab === "mine"
+              ? "No escrows found for your wallet."
+              : "No escrows yet."}
+          </p>
           <p className="text-gray-600 text-sm mb-6">
-            Create the first escrow to get started.
+            {activeTab === "mine"
+              ? "Create an escrow or ask someone to add your address as seller."
+              : "Create the first escrow to get started."}
           </p>
           <Link
             href="/create"
@@ -92,9 +135,9 @@ export default function DashboardPage() {
       )}
 
       {/* Escrow grid */}
-      {!loading && escrows.length > 0 && (
+      {!loading && filteredEscrows.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {escrows.map((e) => (
+          {filteredEscrows.map((e) => (
             <EscrowCard key={e.id} escrow={e} />
           ))}
         </div>

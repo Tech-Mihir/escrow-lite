@@ -226,3 +226,31 @@ All files written. Ready to build and deploy once prerequisites are installed.
 - ✅ DEV_LOG with full history
 - ✅ .gitignore (excludes .env.local, node_modules, target)
 - ✅ 13 contract unit tests
+
+---
+
+## Session 5 – 2026-04-29 (User Feedback Iteration — Level 5 Submission)
+
+### Changes Made Based on User Feedback
+
+| User | Feedback | Change Implemented |
+|---|---|---|
+| Neel Pote | "UI could be better" | Filter tabs on dashboard (All / My Escrows / Funded / Delivered / Released) |
+| Neel Pote | "UI could be better" | Escrow progress stepper on detail page (Funded → Delivered → Released) |
+| Neel Pote | "UI could be better" | Copy-to-clipboard buttons for buyer/seller wallet addresses |
+| Neel Pote | "UI could be better" | Stellar Expert link on detail page for on-chain verification |
+| Sneha Pradip Adhalrao | "workflow is good" | Progress stepper reinforces the 3-step flow users found intuitive |
+| Kartik Botre, Mihir Shirolkar, Om Ozarkar | "wants dispute resolution" | Added to Phase 2 roadmap with contract design notes |
+
+### Files Modified
+
+- `frontend/src/app/page.tsx` — Added filter tabs, "My Escrows" view, per-status filtering
+- `frontend/src/app/escrow/[id]/page.tsx` — Added `EscrowStepper`, `CopyButton` components, Stellar Expert link
+- `README.md` — Updated Table 2 with implemented changes per user, added "Changes Implemented" section
+
+### TypeScript Diagnostics
+
+- `frontend/src/app/page.tsx` — 0 errors
+- `frontend/src/app/escrow/[id]/page.tsx` — 0 errors
+
+### Status: ✅ COMPLETE — Level 5 submission requirements met

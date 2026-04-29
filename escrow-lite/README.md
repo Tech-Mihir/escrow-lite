@@ -158,11 +158,11 @@ Full feedback summary: [docs/USER_FEEDBACK.md](./docs/USER_FEEDBACK.md)
 
 | # | User Name | User Email | User Wallet Address | User Feedback | Commit ID |
 |---|-----------|------------|---------------------|---------------|-----------|
-| 1 | Sneha Pradip Adhalrao | snehaadhalrao2006@gmail.com | `GCUFK3VVC4D7AQOWXZ6QN2TU6MMQ3DXY5FCEVEH352KKBMRND4OAE23B` | Site workflow is good, no lags or bugs. Rating: 5/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
-| 2 | Kartik Botre | kartikbotre2410@gmail.com | `GAW5QO2JPBTMQF2CWU3BBBI74ERAGLT3C5YVIKGNXPNVHYLFFDWTDSRN` | Wants dispute resolution feature added. Rating: 5/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
-| 3 | Mihir Shirolkar | shirolkarmihir@gmail.com | `GARMGQ2JCHZ46B6ZSXPAMPXG2RNDD6XPOBE4NE2HEEKXWKH5XKA4L3WQ` | Wants dispute resolution feature added. Rating: 5/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
-| 4 | Neel Pote | neelpote44@gmail.com | `GAZ27SJ7YFLUGO2O4JCTOWLNNXQZ5C7H5A7WFWEBALT6F6JELKJKNV44` | UI could be better, wants escrow cancellation feature. Rating: 4/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
-| 5 | Om Ozarkar | ozarkarom07@gmail.com | `GCW5A3XBNPB7YQT2OK6XS36D2BA25C5CQ5D7CMTTOUAPJXP3YDEZMB7Q` | Great product, wants dispute resolution. Rating: 5/5 | [ea5125c](https://github.com/Tech-Mihir/escrow-lite/commit/ea5125c) |
+| 1 | Sneha Pradip Adhalrao | snehaadhalrao2006@gmail.com | `GCUFK3VVC4D7AQOWXZ6QN2TU6MMQ3DXY5FCEVEH352KKBMRND4OAE23B` | Site workflow is good, no lags or bugs. Rating: 5/5 — Added escrow progress stepper to make the 3-step flow visually clear | [4eb3320](https://github.com/Tech-Mihir/escrow-lite/commit/4eb3320) |
+| 2 | Kartik Botre | kartikbotre2410@gmail.com | `GAW5QO2JPBTMQF2CWU3BBBI74ERAGLT3C5YVIKGNXPNVHYLFFDWTDSRN` | Wants dispute resolution feature added. Rating: 5/5 — Dispute resolution added to Phase 2 roadmap | [4eb3320](https://github.com/Tech-Mihir/escrow-lite/commit/4eb3320) |
+| 3 | Mihir Shirolkar | shirolkarmihir@gmail.com | `GARMGQ2JCHZ46B6ZSXPAMPXG2RNDD6XPOBE4NE2HEEKXWKH5XKA4L3WQ` | Wants dispute resolution feature added. Rating: 5/5 — Dispute resolution added to Phase 2 roadmap | [4eb3320](https://github.com/Tech-Mihir/escrow-lite/commit/4eb3320) |
+| 4 | Neel Pote | neelpote44@gmail.com | `GAZ27SJ7YFLUGO2O4JCTOWLNNXQZ5C7H5A7WFWEBALT6F6JELKJKNV44` | UI could be better, wants escrow cancellation feature. Rating: 4/5 — Implemented: filter tabs (My Escrows / by status), progress stepper, copy-to-clipboard for wallet addresses, Stellar Expert link | [4eb3320](https://github.com/Tech-Mihir/escrow-lite/commit/4eb3320) |
+| 5 | Om Ozarkar | ozarkarom07@gmail.com | `GCW5A3XBNPB7YQT2OK6XS36D2BA25C5CQ5D7CMTTOUAPJXP3YDEZMB7Q` | Great product, wants dispute resolution. Rating: 5/5 — Dispute resolution added to Phase 2 roadmap | [4eb3320](https://github.com/Tech-Mihir/escrow-lite/commit/4eb3320) |
 
 ---
 
@@ -172,9 +172,28 @@ Full system architecture: [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)
 
 ---
 
-## Phase 2 Improvements
+## Changes Implemented Based on User Feedback
 
-Based on user feedback collected during MVP testing, the following improvements are planned for Phase 2:
+The following changes were made in response to feedback collected from the 5 testnet users:
+
+### ✅ Implemented (this iteration)
+
+**UI Improvements** *(Neel Pote — "UI could be better")*
+- Added **filter tabs** on the dashboard: All / My Escrows / Funded / Delivered / Released — users can now quickly find their own escrows
+- Added **escrow progress stepper** on the detail page — visually shows the 3-step flow (Funded → Delivered → Released) with the current step highlighted
+- Added **copy-to-clipboard** buttons next to buyer/seller wallet addresses on the detail page
+- Added **Stellar Expert link** on the detail page for direct on-chain verification
+
+**Workflow Clarity** *(Sneha Pradip Adhalrao — "workflow is good")*
+- Progress stepper reinforces the 3-step flow that users found intuitive
+
+> **Iteration commit:** https://github.com/Tech-Mihir/escrow-lite/commit/4eb3320
+
+---
+
+## Phase 2 Roadmap
+
+Based on user feedback, the following are planned for Phase 2:
 
 ### 1. Dispute Resolution
 Users requested a way to handle disputes when buyer and seller disagree.
@@ -200,9 +219,6 @@ Users wanted to know when escrow status changes.
 Users requested mobile wallet support.
 - Integrate WalletConnect for mobile wallets
 - Responsive UI improvements
-
-> **Iteration commit:** https://github.com/Tech-Mihir/escrow-lite/commit/4eb3320
-> *(Link to the commit where Phase 1 iteration fixes were applied)*
 
 ---
 
